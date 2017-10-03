@@ -2,8 +2,8 @@ from lxml import html
 import requests
 import os
 import csv
-
-years = [2011, 2012, 2013, 2014, 2015, 2016, 2017]
+years = [2017]
+# years = [2011, 2012, 2013, 2014, 2015, 2016, 2017]
 
 
 teams = ['atlanta-hawks', 'boston-celtics', 'brooklyn-nets', 
@@ -30,6 +30,10 @@ teamsDictionary =  {
 	'utah-jazz' : 'UTA', 'washington-wizards' : 'WAS'
 }
 
+positionDictionary = {
+	'Point Guard' : 'PG', 'Shooting Guard' : 'SG', 'Small Forward' : 'SF', 
+	'Power Forward' : 'PF', 'Center' : 'C', 'Guard' : 'G', 'Forward' : 'F'
+}
 
 
 for year in years:
@@ -82,7 +86,7 @@ for year in years:
 				else :
 					last = fullName[1]
 				
-				filewriter.writerow([middle + last, first, positions[i], teamsDictionary[team], year, numberSalaries[i]])
+				filewriter.writerow([middle + last, first, positionDictionary[positions[i]], teamsDictionary[team], year, numberSalaries[i]])
 				count += 1 
 	print("Printed " + str(year) + " with " + str(count) + " players in " + str(len(teams)) + " teams")
 				
